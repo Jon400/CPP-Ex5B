@@ -366,3 +366,4 @@ bool ariel::isPrime(int num){
     }
     return true;
 }
+
