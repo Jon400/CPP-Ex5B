@@ -68,6 +68,7 @@ TEST_CASE("AscendingIterator") {
     SUBCASE("Iterating over an empty container") {
         MagicalContainer emptyContainer;
         MagicalContainer::AscendingIterator it(emptyContainer);
+        bool b = it == it.end();
         CHECK(it == it.end());
     }
 }
@@ -229,6 +230,7 @@ TEST_CASE("SideCrossIterator") {
         ++it;
         CHECK(*it == 4);
         ++it;
+        auto check = it.end();
         CHECK(it == it.end());
     }
 }
@@ -577,7 +579,7 @@ TEST_CASE("operator= throws when iterators are pointing at different containers"
    {
         MagicalContainer::AscendingIterator it1(container1);
         MagicalContainer::AscendingIterator it2(container2);
-
+        
         CHECK_THROWS_AS(it1 = it2, std::runtime_error);
    }
    SUBCASE("SideCrossIterator")
